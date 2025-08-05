@@ -16,5 +16,9 @@
     "url": "https://github.com/TanqDev88/js-testing-sandbox/issues"
   },
   "homepage": "https://github.com/TanqDev88/js-testing-sandbox#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "chai": "^5.2.1",
+    "mocha": "^11.7.1"
+  }
 }
