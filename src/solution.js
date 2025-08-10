@@ -10,3 +10,14 @@ function solution(number) {
 }
 
 module.exports = solution;
+
+function ipsBetween(start, end) {
+  function ipToNumber(ip) {
+    return ip
+      .split('.')               
+      .map(Number)              
+      .reduce((acc, oct) => acc * 256 + oct, 0); 
+  }
+
+  return ipToNumber(end) - ipToNumber(start);
+}
