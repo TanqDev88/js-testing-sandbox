@@ -9,8 +9,6 @@ function solution(number) {
   return sum;
 }
 
-module.exports = solution;
-
 function ipsBetween(start, end) {
   function ipToNumber(ip) {
     return ip
@@ -21,3 +19,7 @@ function ipsBetween(start, end) {
 
   return ipToNumber(end) - ipToNumber(start);
 }
+
+
+module.exports = solution;
+module.exports = ipsBetween;
