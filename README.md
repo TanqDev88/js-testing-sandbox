@@ -15,5 +15,6 @@ Este repositorio está diseñado como entorno de pruebas para experimentar con f
 2. Agregá los tests correspondientes en `test/test.js`.
 3. Ejecutá los tests con:
 
-```bash
-npm test
+
+### En la carpeta js-testing-sandbox/test ejecutar el comando:
+npx mocha
