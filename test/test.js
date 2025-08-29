@@ -1,10 +1,12 @@
 const { assert } = require("chai");     
 const solution = require("../src/solution");  
 const getAverage = require("../src/solution");
+const procesarTarjeta = require("../src/solution");
+
 
 describe("basic tests", function () {     
   it("should return 23 for input 10", function () {
-    assert.strictEqual(solution(20), 178);  
+    assert.strictEqual(solution(10), 23);  
   });
 });
 
@@ -27,4 +29,45 @@ describe("getAverage function", function () {
     assert.strictEqual(getAverage([100, 100, 100, 100]), 100);
   });
 
+});
+
+describe("procesarTarjeta", () => {
+  it("debe registrar TC En sucursal si la tarjeta es crédito", () => {
+    const fakeTarjeta = () => "credito";
+    const logCalls = [];
+    const fakeLog = (...args) => logCalls.push(args);
+
+    const fakeEsCredito = (t) => t === "credito";
+    const fakeEsDebito = (t) => t === "debito";
+
+    procesarTarjeta(fakeTarjeta, fakeLog, fakeEsCredito, fakeEsDebito);
+
+    assert.deepEqual(logCalls[0], ['', 'Seguimiento De Tarjeta', 'TC En sucursal']);
+  });
+
+  it("debe registrar TD En sucursal si la tarjeta es débito", () => {
+    const fakeTarjeta = () => "debito";
+    const logCalls = [];
+    const fakeLog = (...args) => logCalls.push(args);
+
+    const fakeEsCredito = (t) => t === "credito";
+    const fakeEsDebito = (t) => t === "debito";
+
+    procesarTarjeta(fakeTarjeta, fakeLog, fakeEsCredito, fakeEsDebito);
+
+    assert.deepEqual(logCalls[0], ['', 'Seguimiento De Tarjeta', 'TD En sucursal']);
+  });
+
+  it("debe registrar En sucursal sin datos si no es crédito ni débito", () => {
+    const fakeTarjeta = () => "otro";
+    const logCalls = [];
+    const fakeLog = (...args) => logCalls.push(args);
+
+    const fakeEsCredito = (t) => t === "credito";
+    const fakeEsDebito = (t) => t === "debito";
+
+    procesarTarjeta(fakeTarjeta, fakeLog, fakeEsCredito, fakeEsDebito);
+
+    assert.deepEqual(logCalls[0], ['', 'Seguimiento De Tarjeta', 'En sucursal sin datos']);
+  });
 });
